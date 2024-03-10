@@ -27,6 +27,9 @@ const jsxHeading = <h1>Namaste React using JSX</h1>
 //todo Functional Component - NEW
 //? A function which returns ReactElement is known as functional component.
 
+const title = (
+    <h1>Namaste React</h1>
+)
 const Title = () => {
     return (
         <h1>Namaste React</h1>
@@ -35,7 +38,10 @@ const Title = () => {
 const HeadingComponent = () => {
     return (
         <>
+            {title}
             <Title />
+            {Title()}
+            {/* line 42 and 43 both are same, in 43 we calling the function */}
             <h1>Namaste React using functinal component.</h1>
         </>
     )
