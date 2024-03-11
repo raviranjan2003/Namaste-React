@@ -1,0 +1,16 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid bla;
+}
+.logo-container > img {
+    width: 150px;
+}
+.nav-items > ul {
+    display: flex;
+}
+.nav-items > ul > li {
+    padding: 1.5rem;
+    margin: 1rem;
+    list-style: none;
+}
