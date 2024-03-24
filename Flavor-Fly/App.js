@@ -10,6 +10,7 @@ import './index.css';
     - Search Restaurant
     - Restaurant Container
         - Restaurant Card
+            - Name, Img, Description, Reating, TimeOfDelivery
 * Footer
     - Copyrights
     - Some Links
@@ -35,6 +36,38 @@ const Header = () => {
         </>
     )
 }
+const RestaurantCard = () => {
+    return (
+        <>
+            <div className="res-card" style={{ backgroundColor : "#f0f0f0"}}>
+                <img 
+                className="res-logo"
+                alt="res-logo" 
+                src="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/spaghetti-carbonara-382837d.jpg?resize=768,574" />
+                <h3>Meghna Foods</h3>
+                <h4>Noodles, Chinese</h4>
+                <h4>4.5 stars</h4>
+            </div>
+        </>
+    )
+}
+const Body = () => {
+    return (
+        <>
+            <div className="body">
+                <div className="search">Search</div>
+                <div className="res-container" >
+                    <RestaurantCard />
+                    <RestaurantCard />
+                    <RestaurantCard />
+                    <RestaurantCard />
+                    <RestaurantCard />
+                    <RestaurantCard />
+                </div>
+            </div>
+        </>
+    )
+}
 const AppLayout = () => {
     return (
         <>
@@ -42,6 +75,7 @@ const AppLayout = () => {
                 {/* Header Component */}
                 <Header />
                 {/* Body */}
+                <Body />
                 {/* Footer */}
             </div>
         </>

@@ -1,7 +1,7 @@
 .header{
     display: flex;
     justify-content: space-between;
-    border: 2px solid bla;
+    border: 2px solid black;
 }
 .logo-container > img {
     width: 150px;
@@ -13,4 +13,24 @@
     padding: 1.5rem;
     margin: 1rem;
     list-style: none;
+}
+.res-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.res-card{
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    height: 300px;
+}
+.res-card:hover {
+    border: 1px solid black;
+    cursor: pointer;
+}
+.search {
+    padding: 10px;
+}
+.res-logo{
+    width: 100%;
 }
