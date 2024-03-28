@@ -73,6 +73,11 @@ const Body = () => {
                         type = "Burger"
                         rating = "4.4"
                     />
+                    <RestaurantCard 
+                        name = "Dominos"
+                        type = "Pizza"
+                        rating = "4.6"
+                    />
                 </div>
             </div>
         </>
