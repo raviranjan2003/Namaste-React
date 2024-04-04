@@ -31,6 +31,42 @@
 .search {
     padding: 10px;
 }
-.res-logo{
-    width: 100%;
+.res-container{
+    display: flex;
+    justify-content: center;
 }
+.res-card {
+    width: 300px; /* Adjust the width as needed */
+    margin: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .res-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .res-logo {
+    width: 100%; /* Ensures the image takes full width of its container */
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensures the image fills the container without stretching */
+    border-radius: 8px;
+  }
+  
+  h3,
+  h4 {
+    margin: 10px 0;
+  }
+  
+  /* Optional: Adjust text styling */
+  h3 {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  h4 {
+    font-size: 0.8rem;
+    color: #666;
+  }
