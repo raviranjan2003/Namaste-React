@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #212121;
+  background-color: #f0f0f0;
   padding: 10px 20px; /* Adjust padding top and bottom */
 }
 
@@ -47,13 +47,13 @@
 .nav-items ul li {
   margin-right: 1.3rem; /* Adjust margin */
   font-size: 1.2rem; /* Adjust font size */
-  color: #fff;
+  color: #212121;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .nav-items ul li:hover {
-  color: #ffd54f;
+  color: #ffc107;
 }
 
 @media only screen and (max-width: 600px) {
@@ -97,59 +97,44 @@
     margin: 1rem;
     list-style: none;
 } */
-.res-container{
+.res-container {
     display: flex;
     flex-wrap: wrap;
-}
-.res-card{
-    margin: 5px;
-    padding: 5px;
-    width: 200px;
-    height: 300px;
-}
-.res-card:hover {
-    border: 1px solid black;
-    cursor: pointer;
-}
-.search {
-    padding: 10px;
-}
-.res-container{
-    display: flex;
     justify-content: center;
 }
+
 .res-card {
     width: 300px; /* Adjust the width as needed */
-    margin: 10px;
+    margin: 13px;
     padding: 12px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .res-card:hover {
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Add transform transition */
+}
+
+.res-card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .res-logo {
+    transform: scale(1.05); /* Increase size on hover */
+}
+
+.res-logo {
     width: 100%; /* Ensures the image takes full width of its container */
     height: 200px; /* Adjust the height as needed */
     object-fit: cover; /* Ensures the image fills the container without stretching */
     border-radius: 8px;
-  }
-  
-  h3,
-  h4 {
+}
+
+h3, h4 {
     margin: 10px 0;
-  }
-  
-  /* Optional: Adjust text styling */
-  h3 {
+}
+
+/* Optional: Adjust text styling */
+h3 {
     font-size: 1rem;
     color: #333;
-  }
-  
-  h4 {
+}
+
+h4 {
     font-size: 0.8rem;
     color: #666;
-  }
+}
