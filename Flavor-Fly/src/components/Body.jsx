@@ -1,35 +1,27 @@
 import RestaurantCard from './RestaurantCard';
+import { RestaurantList } from '../assets/restaurantList';
+
 const Body = () => {
     return (
         <>
             <div className="body">
-                <div className="search">Search</div>
                 <div className="res-container" >
-                    <RestaurantCard
+                    {
+                        RestaurantList.map(restaurant => 
+                            <RestaurantCard 
+                                key = {restaurant.info.id}
+                                name = {restaurant.info.name}
+                                type = {restaurant.info.cuisines[0]}
+                                rating = {restaurant.info.avgRating}
+                                imgId = {restaurant.info.cloudinaryImageId}
+                            />
+                        )
+                    }
+                    {/* <RestaurantCard
                         name = "Meghna food" 
                         type = "Noodles"
                         rating = "4.5"
-                    />
-                    <RestaurantCard 
-                        name = "KFC"
-                        type = "Chicken"
-                        rating = "4.6"
-                    />
-                    <RestaurantCard 
-                        name = "MacD"
-                        type = "Burger"
-                        rating = "4.4"
-                    />
-                    <RestaurantCard 
-                        name = "Dominos"
-                        type = "Pizza"
-                        rating = "4.6"
-                    />
-                    <RestaurantCard 
-                        name = "Pizza-hut"
-                        type = "Pizza"
-                        rating = "4.4"
-                    />
+                    /> */}
                 </div>
             </div>
         </>
