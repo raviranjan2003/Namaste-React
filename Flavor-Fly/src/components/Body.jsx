@@ -10,10 +10,7 @@ const Body = () => {
                         RestaurantList.map(restaurant => 
                             <RestaurantCard 
                                 key = {restaurant.info.id}
-                                name = {restaurant.info.name}
-                                type = {restaurant.info.cuisines[0]}
-                                rating = {restaurant.info.avgRating}
-                                imgId = {restaurant.info.cloudinaryImageId}
+                                resData = {restaurant.info}
                             />
                         )
                     }
