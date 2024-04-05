@@ -1,13 +1,28 @@
+import { useState } from 'react';
 import RestaurantCard from './RestaurantCard';
 import { RestaurantList } from '../assets/restaurantList';
 
 const Body = () => {
+    const [resData, setResData] = useState(RestaurantList);
+
+    const handleClick = () => {
+        console.log("Button clicked");
+        setResData(resData.filter(res => res.info.avgRating > 4.2));
+    }
+
     return (
         <>
+            <div className='filter'>
+                <button className='filter-btn'
+                    onClick={handleClick}
+                >
+                    Top Rated Restaurant
+                </button>
+            </div>
             <div className="body">
                 <div className="res-container" >
                     {
-                        RestaurantList.map(restaurant => 
+                        resData.map(restaurant => 
                             <RestaurantCard 
                                 key = {restaurant.info.id}
                                 resData = {restaurant.info}
