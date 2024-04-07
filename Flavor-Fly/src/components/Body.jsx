@@ -16,7 +16,7 @@ const Body = () => {
                 <button className='filter-btn'
                     onClick={handleClick}
                 >
-                    Top Rated Restaurant
+                    Sort Restaurant
                 </button>
             </div>
             <div className="body">
