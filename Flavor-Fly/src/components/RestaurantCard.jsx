@@ -13,6 +13,7 @@ const RestaurantCard = (props) => {
                     />
                     <h3>{name}</h3>
                     <h4>{cuisines[0]}</h4>
+                    <h4>{avgRating} stars</h4>
                 </div>
             </div>
         </>
