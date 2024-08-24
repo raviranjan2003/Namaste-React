@@ -5,11 +5,11 @@ import axios from 'axios';
 
 const Body = () => {
     const URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-    const [resData, setResData] = useState(RestaurantList);
+    const [resData, setResData] = useState([]);
 
     const handleClick = () => {
         console.log("Button clicked");
-        setResData(resData.filter(res => res.info.avgRating > 4.2));
+        setResData(resData.filter(res => res.info.avgRating > 4.3));
     }
 
     useEffect(() => {
@@ -18,13 +18,13 @@ const Body = () => {
     }, [])
     
     const fetchData = async () => {
-        // const data = await axios.get(URL);
-        // console.log(data);
         const data = await fetch(URL);
-        
-        const json = await data.json();
 
-        console.log(json);
+        const json = await data.json();
+        // Optional Chaining
+        setResData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+        // console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
         
     }
