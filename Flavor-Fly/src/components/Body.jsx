@@ -28,7 +28,10 @@ const Body = () => {
 
         
     }
-
+    //Adding loader
+    if(resData.length === 0) {
+        return <h1 style={{display: "flex", alignItems: "center", justifyContent: "center"}}>Loading...</h1>
+    }
     return (
         <>
             <div className='filter'>
