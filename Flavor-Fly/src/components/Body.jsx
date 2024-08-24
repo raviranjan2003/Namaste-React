@@ -30,11 +30,10 @@ const Body = () => {
         
     }
     //Adding loader
-    if(resData.length === 0) {
-        // return <h1 style={{display: "flex", alignItems: "center", justifyContent: "center"}}>Loading...</h1>
-        return <Shimer />
-    }
-    return (
+    // if(resData.length === 0) {
+    //     return <Shimer />
+    // }
+    return resData.length === 0 ? <Shimer /> : (
         <>
             <div className='filter'>
                 <button className='filter-btn'
