@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import RestaurantCard from './RestaurantCard';
 import { RestaurantList } from '../assets/restaurantList';
 import axios from 'axios';
+import Shimer from './Shimer';
 
 const Body = () => {
     const URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
@@ -30,7 +31,8 @@ const Body = () => {
     }
     //Adding loader
     if(resData.length === 0) {
-        return <h1 style={{display: "flex", alignItems: "center", justifyContent: "center"}}>Loading...</h1>
+        // return <h1 style={{display: "flex", alignItems: "center", justifyContent: "center"}}>Loading...</h1>
+        return <Shimer />
     }
     return (
         <>
