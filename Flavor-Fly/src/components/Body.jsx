@@ -8,9 +8,20 @@ const Body = () => {
     const URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
     const [resData, setResData] = useState([]);
 
+    const [filteredRes, setFilteredRes] = useState([]);
+
+    const [searchText, setSearchText] = useState("");
+
     const handleClick = () => {
         console.log("Button clicked");
         setResData(resData.filter(res => res.info.avgRating > 4.3));
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const filtered = resData.filter(res => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+
+        setFilteredRes(filtered);
     }
 
     useEffect(() => {
@@ -25,9 +36,7 @@ const Body = () => {
         // Optional Chaining
         setResData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-        // console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-
-        
+        setFilteredRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
     //Adding loader
     // if(resData.length === 0) {
@@ -35,6 +44,16 @@ const Body = () => {
     // }
     return resData.length === 0 ? <Shimer /> : (
         <>
+            <div className="search-bar">
+                <input type="text" 
+                    placeholder="Search..." 
+                    value={searchText} 
+                    onChange={(e) => {
+                        setSearchText(e.target.value);
+                    }}
+                />
+                <button type="submit" onClick={handleSearch}>Search</button>
+            </div>
             <div className='filter'>
                 <button className='filter-btn'
                     onClick={handleClick}
@@ -45,7 +64,7 @@ const Body = () => {
             <div className="body">
                 <div className="res-container" >
                     {
-                        resData.map(restaurant => 
+                        filteredRes.map(restaurant => 
                             <RestaurantCard 
                                 key = {restaurant.info.id}
                                 resData = {restaurant.info}

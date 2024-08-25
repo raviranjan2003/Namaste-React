@@ -11,10 +11,7 @@ const Header = () => {
                 <div className="logo-container">
                     <img className="logo" src={img}/>
                 </div>
-                <div className="search-bar">
-                    <input type="text" placeholder="Search..." />
-                    <button type="submit">Search</button>
-                </div>
+                
                 <div className="nav-items">
                     <ul>
                         <li>Home</li>
