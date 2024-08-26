@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import '../index.css';
 import Header from './components/Header';
 import Body from './components/Body';
+import About from "./components/About";
+import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 /*
 * Header
@@ -34,9 +36,20 @@ const AppLayout = () => {
     )
 }
 
+const appRoute = createBrowserRouter([
+    {
+        path : '/',
+        element : <AppLayout />
+    },
+    {
+        path : '/about',
+        element : <About />
+    }
+])
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // root.render(jsxHeading);
-root.render(<AppLayout />);
+// root.render(<AppLayout />);
+root.render(<RouterProvider router={appRoute} />);
