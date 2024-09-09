@@ -53,9 +53,20 @@
   color: #212121;
   cursor: pointer;
   transition: color 0.3s ease;
+  a {
+    transition: color 0.3s ease;
+  }
+}
+
+.nav-items ul li a {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Set color to black */
 }
 
 .nav-items ul li:hover {
+  color: #ffc107;
+}
+.nav-items ul li a:hover {
   color: #ffc107;
 }
 
