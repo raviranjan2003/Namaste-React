@@ -6,7 +6,7 @@ import Body from './components/Body';
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 
 /*
 * Header
@@ -30,8 +30,8 @@ const AppLayout = () => {
             <div className="app" >
                 {/* Header Component */}
                 <Header />
-                {/* Body */}
-                <Body />
+                {/* Outlet--> It will be replaced by children routes which matches the route */}
+                <Outlet />
                 {/* Footer */}
             </div>
         </>
@@ -42,16 +42,22 @@ const appRoute = createBrowserRouter([
     {
         path : '/',
         element : <AppLayout />,
-        errorElement : <Error />
+        errorElement : <Error />,
+        children : [
+            {
+                path : '/',
+                element : <Body />
+            },
+            {
+                path : '/about',
+                element : <About />
+            },
+            {
+                path : '/contact',
+                element : <Contact />
+            }
+        ]
     },
-    {
-        path : '/about',
-        element : <About />
-    },
-    {
-        path : '/contact',
-        element : <Contact />
-    }
 ])
 
 
