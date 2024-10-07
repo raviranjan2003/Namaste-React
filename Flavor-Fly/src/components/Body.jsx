@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import RestaurantCard from './RestaurantCard';
 import { RestaurantList } from '../assets/restaurantList';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Shimer from './Shimer';
 
 const Body = () => {
@@ -31,7 +32,7 @@ const Body = () => {
     }, [])
     
     const fetchData = async () => {
-        const data = await fetch(PROXY_URL);
+        const data = await fetch(URL);
 
         const json = await data.json();
         // Optional Chaining
@@ -66,10 +67,14 @@ const Body = () => {
                 <div className="res-container" >
                     {
                         filteredRes.map(restaurant => 
-                            <RestaurantCard 
+                            <Link 
+                                to={"/restaurants/"+restaurant.info.id}
                                 key = {restaurant.info.id}
-                                resData = {restaurant.info}
-                            />
+                            > 
+                                <RestaurantCard 
+                                    resData = {restaurant.info}
+                                />
+                            </Link>
                         )
                     }
                     {/* <RestaurantCard
