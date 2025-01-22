@@ -8,14 +8,22 @@ class UserClass extends React.Component{
         // 'this' keyword like this.props
 
         //creating states
-        this.state = {
-            count: 0,
-            count2: 1, //multiple state variables inside the same this.state which hold the whole big object
+        // this.state = {
+        //     count: 0,
+        //     count2: 1, //multiple state variables inside the same this.state which hold the whole big object
             
+        // }
+
+        this.state = {
+            userInfo : {
+                name: "Demo",
+                avatar_url: "http:google.com",
+                location: "Bihar"
+            }
         }
 
         // console.log(props);
-        console.log("Child Constructor called ");
+        // console.log("Child Constructor called ");
     }
 
     // ComponentDidMount is used to make APIs calls 
@@ -23,14 +31,29 @@ class UserClass extends React.Component{
     // fill the data got from APIs response
     // It will help in reducing the time of component 
     // rendering/mounting 
-    componentDidMount() {
-        console.log("Child Component mounted !");
+    //! We can make componentDidMount fxn to async which
+    //! helps in making asynchronous api request
+    async componentDidMount() {
+        // console.log("Child Component mounted !");
+        // console.log("Parent Component mounted !");
+
+        const response = await fetch("https://api.github.com/users/raviranjan2003");
+        console.log(response);
+        const data = await response.json();
+        console.log(data);
+
+        this.setState({
+            userInfo: data
+        })
     }
 
     render() {
-        const {name} = this.props
-        const { count } = this.state;
-        console.log("Render called");
+        // const {name} = this.props
+        // const { count } = this.state;
+        // console.log("Render called");
+
+        const { name, location, avatar_url } = this.state.userInfo;
+        console.log(name, location, avatar_url)
         return (
             <div> 
                 <h1>Count: {this.state.count}</h1>
@@ -45,8 +68,9 @@ class UserClass extends React.Component{
                     }}
                 >Increment</button>
                 <h1>User Class</h1>
+                <img src={avatar_url} alt='Avatar'/>
                 <h2>Name: {name}</h2>
-                <h3>Location: </h3>
+                <h3>Location: {location}</h3>
                 <h4>Contact: </h4>
             </div>
         )
