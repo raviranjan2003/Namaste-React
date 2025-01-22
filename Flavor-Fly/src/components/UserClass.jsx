@@ -3,14 +3,19 @@ import React from 'react';
 class UserClass extends React.Component{
     constructor(props) {
         super(props);
+        //After using super(props), we've access to the
+        //props through out the class with the help of 
+        // 'this' keyword like this.props
 
         //creating states
         this.state = {
             count: 0,
+            count2: 1, //multiple state variables inside the same this.state which hold the whole big object
+            
         }
 
         // console.log(props);
-        console.log("Constructor called ");
+        console.log("Child Constructor called ");
     }
 
     // ComponentDidMount is used to make APIs calls 
@@ -19,11 +24,12 @@ class UserClass extends React.Component{
     // It will help in reducing the time of component 
     // rendering/mounting 
     componentDidMount() {
-        console.log("Component mounted !");
+        console.log("Child Component mounted !");
     }
 
     render() {
         const {name} = this.props
+        const { count } = this.state;
         console.log("Render called");
         return (
             <div> 
@@ -34,7 +40,7 @@ class UserClass extends React.Component{
                         // this.state.count = this.state.count + 1;
 
                         this.setState({
-                            count: this.state.count + 1
+                            count: count + 1
                         })
                     }}
                 >Increment</button>
