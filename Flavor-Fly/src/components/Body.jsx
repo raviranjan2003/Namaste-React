@@ -4,6 +4,7 @@ import { RestaurantList } from '../assets/restaurantList';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Shimer from './Shimer';
+import useOnlineStatus from '../utils/useOnlineStatus';
 
 const Body = () => {
     const URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
@@ -44,6 +45,11 @@ const Body = () => {
     // if(resData.length === 0) {
     //     return <Shimer />
     // }
+    const onlineStatus = useOnlineStatus();
+
+    if(!onlineStatus) {
+        return <h1>Seems like you are offline, check your internet connection!!</h1>
+    }
     return resData.length === 0 ? <Shimer /> : (
         <>
             <div className="search-bar">
