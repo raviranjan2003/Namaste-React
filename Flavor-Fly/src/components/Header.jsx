@@ -2,10 +2,13 @@ import { useState } from "react";
 import img from "../assets/smoking-burger-with-lettuce-3624ld.png"
 
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
 
     const [btnName, setBtnName] = useState("LogIn");
+
+    const onlineStatus = useOnlineStatus();
 
     return (
         <>
@@ -16,6 +19,7 @@ const Header = () => {
                 
                 <div className="nav-items">
                     <ul>
+                        <li>{onlineStatus ? <span style={{color:"green"}}>Online</span> : <span style={{color:"red"}}>Offline</span>}</li>
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/about">About Us</Link></li>
                         <li><Link to="/contact">Contact Us</Link></li>
