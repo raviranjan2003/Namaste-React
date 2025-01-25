@@ -138,6 +138,10 @@
     border-radius: 8px;
 }
 
+.res-menu {
+  text-align: center;
+}
+
 h3, h4 {
     margin: 10px 0;
 }
