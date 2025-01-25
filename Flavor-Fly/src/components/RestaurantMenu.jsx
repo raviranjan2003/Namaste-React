@@ -2,10 +2,18 @@ import Shimer from './Shimer';
 import { useParams } from 'react-router-dom';
 import useRestaurantMenu from '../utils/useRestaurantMenu';
 import RestaurantCategory from './RestaurantCategory';
+import { useState } from 'react';
 
 const RestaurantMenu = () => {
     const { resId } = useParams();
+    const [showIndex, setShowIndex] = useState(-1);
     // const [resInfo, setResInfo] = useState(null);
+    const toggleAccordion = (ind) => {
+        if(ind === showIndex)
+            setShowIndex(-1);
+        else
+            setShowIndex(ind);
+    }
     
     //Using custom hooks
     const resInfo = useRestaurantMenu(resId);
@@ -31,8 +39,16 @@ const RestaurantMenu = () => {
                     {item.card.info.price/100 || item.card.info.defaultPrice/100}</li>)}
             </ul> */}
             {/*Restaurant Category Accordions */}
+            {/*Now RestaurantCategory is controlled component, it does not have
+                it's own state to toggle it's collapsable feature
+            */}
             {filteredResCategory.map((category, ind) => (
-                <RestaurantCategory key={ind} data={category?.card?.card}/>
+                <RestaurantCategory 
+                    key={ind}
+                    data={category?.card?.card}
+                    showItems={ind === showIndex}
+                    updateIndexFxn = {()=>toggleAccordion(ind)}
+                />
             ))}
         </div>
     )
