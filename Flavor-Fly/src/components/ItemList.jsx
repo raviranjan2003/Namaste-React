@@ -5,7 +5,7 @@ const ItemList = ({ items }) => {
         <div style={{ padding: "1rem" }}>
             {items.map((item) => (
                 <div
-                    key={item.id}
+                    key={item.card.info.id}
                     style={{
                         display: "flex",
                         justifyContent: "space-between",
