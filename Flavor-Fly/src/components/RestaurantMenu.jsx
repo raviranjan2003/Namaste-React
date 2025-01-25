@@ -17,15 +17,10 @@ const RestaurantMenu = () => {
 
     const resMenu = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
     const { itemCards } = resMenu || {}
-    // console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-    // console.log(itemCards);
-    // console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
     const resCategory = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
     const filteredResCategory = resCategory.filter((c) => c?.card?.card?.["@type"] === 
         "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory")
-    
-    // console.log(filteredResCategory);
     
     return  (
         <div className="res-menu">
