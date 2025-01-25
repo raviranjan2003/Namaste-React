@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard, { withClosedLabel } from './RestaurantCard';
 import { RestaurantList } from '../assets/restaurantList';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,15 @@ const Body = () => {
     const [filteredRes, setFilteredRes] = useState([]);
 
     const [searchText, setSearchText] = useState("");
+
+    //Logic for checking online status using custom hook
+    const onlineStatus = useOnlineStatus();
+
+    if(!onlineStatus) {
+        return <h1>Seems like you are offline, check your internet connection!!</h1>
+    }
+
+    const RestaurantCardClosed = withClosedLabel(RestaurantCard);
 
     const handleClick = () => {
         console.log("Button clicked");
@@ -45,11 +54,7 @@ const Body = () => {
     // if(resData.length === 0) {
     //     return <Shimer />
     // }
-    const onlineStatus = useOnlineStatus();
 
-    if(!onlineStatus) {
-        return <h1>Seems like you are offline, check your internet connection!!</h1>
-    }
     return resData.length === 0 ? <Shimer /> : (
         <>
             <div className="search-bar">
@@ -77,9 +82,7 @@ const Body = () => {
                                 to={"/restaurants/"+restaurant.info.id}
                                 key = {restaurant.info.id}
                             > 
-                                <RestaurantCard 
-                                    resData = {restaurant.info}
-                                />
+                                {!restaurant.info.isOpen ? <RestaurantCardClosed resData = {restaurant.info}/> : <RestaurantCard resData = {restaurant.info} />}    
                             </Link>
                         )
                     }
