@@ -1,4 +1,4 @@
-import React, {lazy, Suspense } from "react";
+import React, {lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import '../index.css';
 import Header from './components/Header';
@@ -9,6 +9,7 @@ import Error from "./components/Error";
 import { BrowserRouter, createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery";
+import userContext from "./utils/userContext.js";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -29,15 +30,19 @@ const Grocery = lazy(() => import("./components/Grocery"));
 */
 
 const AppLayout = () => {
+    const [username, setUsername] = useState("Ravi");
+
     return (
-        <>
-            <div className="app" >
-                {/* Header Component */}
-                <Header />
-                {/* Outlet--> It will be replaced by children routes which matches the route */}
-                <Outlet />
-                {/* Footer */}
-            </div>
+        <>  
+            <userContext.Provider value={{ loggedInUser: username }}>
+                <div className="app" >
+                    {/* Header Component */}
+                    <Header />
+                    {/* Outlet--> It will be replaced by children routes which matches the route */}
+                    <Outlet />
+                    {/* Footer */}
+                </div>
+            </userContext.Provider>
         </>
     )
 }
