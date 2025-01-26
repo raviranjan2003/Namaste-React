@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import img from "../assets/smoking-burger-with-lettuce-3624ld.png"
 
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 
 const Header = () => {
 
     const [btnName, setBtnName] = useState("LogIn");
 
     const onlineStatus = useOnlineStatus();
+
+    const {loggedInUser} = useContext(userContext);
 
     return (
         <>
@@ -25,11 +28,15 @@ const Header = () => {
                         <li><Link to="/contact">Contact Us</Link></li>
                         <li><Link to="/grocery">Grocery</Link></li>
                         <li>Cart</li>
-                        <button style={{ padding : "5px 20px"}} onClick={() => {
+                        {loggedInUser ? 
+                        <button
+                            style={{ padding: "5px 20px", cursor: "pointer"}}
+                        >{loggedInUser}</button> :
+                        <button style={{ padding : "5px 20px", cursor: "pointer"}} onClick={() => {
                             btnName === "LogIn" ?
                             setBtnName("LogOut") :
                             setBtnName("LogIn")
-                        }}>{btnName}</button>
+                        }}>{btnName}</button>}
                     </ul>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import User from './User';
 import UserClass from './UserClass';
+import userContext from '../utils/userContext.js';
 
 //class-based About component
 class About extends React.Component {
@@ -12,6 +13,9 @@ class About extends React.Component {
    componentDidMount() {
     // console.log("Parent Component mounted !");
   }
+  //! Since we cannot use hooks in class-based components
+  //! we cannot use useContext hooks
+  //! So we'll use <UserContext.Consumer> component
 
   render() {
     // console.log("Parent Render");
@@ -20,6 +24,11 @@ class About extends React.Component {
         <h1>About</h1>
         <h2>This is Namaste React !</h2>
         <hr />
+        <userContext.Consumer>
+          {({ loggedInUser }) => (
+            <h1 style={{ fontSize: "bold" }}>LoggedIn User: {loggedInUser}</h1>
+          )}
+        </userContext.Consumer>
         <User />
         <hr />
         <UserClass name="Ravi"/>
