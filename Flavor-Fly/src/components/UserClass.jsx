@@ -38,9 +38,7 @@ class UserClass extends React.Component{
         // console.log("Parent Component mounted !");
 
         const response = await fetch("https://api.github.com/users/raviranjan2003");
-        console.log(response);
         const data = await response.json();
-        console.log(data);
 
         this.setState({
             userInfo: data
@@ -53,7 +51,6 @@ class UserClass extends React.Component{
         // console.log("Render called");
 
         const { name, location, avatar_url } = this.state.userInfo;
-        console.log(name, location, avatar_url)
         return (
             <div> 
                 <h1>Count: {this.state.count}</h1>
