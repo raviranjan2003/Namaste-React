@@ -4,6 +4,7 @@ import img from "../assets/smoking-burger-with-lettuce-3624ld.png"
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import userContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
 
@@ -12,6 +13,9 @@ const Header = () => {
     const onlineStatus = useOnlineStatus();
 
     const {loggedInUser} = useContext(userContext);
+
+    //Subscribing to our store for data fetching
+    const cartItems = useSelector((store) => store.cart.items);
 
     return (
         <>
@@ -27,7 +31,7 @@ const Header = () => {
                         <li><Link to="/about">About Us</Link></li>
                         <li><Link to="/contact">Contact Us</Link></li>
                         <li><Link to="/grocery">Grocery</Link></li>
-                        <li>Cart</li>
+                        <li><b>Cart: {cartItems.length}</b></li>
                         {loggedInUser ? 
                         <button
                             style={{ padding: "5px 20px", cursor: "pointer"}}
