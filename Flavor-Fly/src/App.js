@@ -10,6 +10,8 @@ import { BrowserRouter, createBrowserRouter, RouterProvider, Outlet } from 'reac
 import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery";
 import userContext from "./utils/userContext.js";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -34,15 +36,17 @@ const AppLayout = () => {
 
     return (
         <>  
-            <userContext.Provider value={{ loggedInUser: username }}>
-                <div className="app" >
-                    {/* Header Component */}
-                    <Header />
-                    {/* Outlet--> It will be replaced by children routes which matches the route */}
-                    <Outlet />
-                    {/* Footer */}
-                </div>
-            </userContext.Provider>
+            <Provider store={ appStore }>
+                <userContext.Provider value={{ loggedInUser: username }}>
+                    <div className="app" >
+                        {/* Header Component */}
+                        <Header />
+                        {/* Outlet--> It will be replaced by children routes which matches the route */}
+                        <Outlet />
+                        {/* Footer */}
+                    </div>
+                </userContext.Provider>
+            </Provider>
         </>
     )
 }
