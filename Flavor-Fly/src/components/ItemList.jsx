@@ -1,6 +1,16 @@
+import { useDispatch } from "react-redux";
+import { addItems } from "../utils/cartSlice";
 import { CLOUDINARY_URL } from "../utils/constants";
 
 const ItemList = ({ items }) => {
+
+    const dispatch = useDispatch();
+
+    const handleAddItem = (item) => {
+        //dispatching action
+        dispatch(addItems(item));
+    }
+
     return (
         <div style={{ padding: "1rem" }}>
             {items.map((item) => (
@@ -71,7 +81,7 @@ const ItemList = ({ items }) => {
                                 fontSize: "14px",
                                 transition: "background-color 0.3s ease",
                             }}
-                            onClick={() => alert(`Added ${item?.card?.info?.name} to cart!`)}
+                            onClick={() => handleAddItem(item)}
                         >
                             Add+
                         </button>
