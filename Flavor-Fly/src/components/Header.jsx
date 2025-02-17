@@ -31,7 +31,7 @@ const Header = () => {
                         <li><Link to="/about">About Us</Link></li>
                         <li><Link to="/contact">Contact Us</Link></li>
                         <li><Link to="/grocery">Grocery</Link></li>
-                        <li><b>Cart: {cartItems.length}</b></li>
+                        <li><Link to="/cart">Cart: {cartItems.length}</Link></li>
                         {loggedInUser ? 
                         <button
                             style={{ padding: "5px 20px", cursor: "pointer"}}
