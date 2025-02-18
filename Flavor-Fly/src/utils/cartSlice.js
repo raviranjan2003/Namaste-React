@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
     name: "cart",
@@ -14,7 +14,14 @@ const cartSlice = createSlice({
             state.items.pop();
         },
         clearCart: (state) => {
+            //console.log(current(state))
+            //! we can only mutate the state, can not change the reference
+            // state = []  ==> this is not allowed
+
             state.items.length = 0;
+            
+            //we can also do the same by returning
+            //return { items : [] };
         }
     }
 })
